@@ -3,7 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 
-app.use("/", require("./routes"));
+app.use("/", require("./Routes"));
 
 require("./config/mongoConnection");
 
