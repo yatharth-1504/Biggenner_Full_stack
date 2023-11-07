@@ -9,6 +9,7 @@ const Navbar = ({ toggleRefresh }) => {
         <button
           onClick={(e) => {
             toggleRefresh();
+            navigate("/");
           }}
           style={{
             color: "white",

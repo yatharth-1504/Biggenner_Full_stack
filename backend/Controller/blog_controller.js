@@ -24,9 +24,24 @@ module.exports.getBlogs = async (req, res) => {
     return res.status(200).send({
       blogs: blogs,
     });
-  } catch (error) {
+  } catch (err) {
     return res.status(500).send({
       message: err.message,
+    });
+  }
+};
+
+module.exports.deleteBlog = async (req, res) => {
+  try {
+    const blog = await Blog.deleteOne({ title: req.body.title });
+    return res.status(200).send({
+      message: "Blog deleted successfully",
+      blog,
+    });
+  } catch (e) {
+    return res.status(500).send({
+      message: "Error in deleting blog",
+      message: e.message,
     });
   }
 };

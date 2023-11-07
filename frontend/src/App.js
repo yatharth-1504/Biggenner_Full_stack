@@ -12,11 +12,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar toggleRefresh={toggleRefresh}/>
+        <Navbar toggleRefresh={toggleRefresh} />
         <div className="content">
           <Routes>
-            <Route path="/" element={Home({ refresh })} />
-            <Route exact path="/create" element={Create()} />
+            <Route exact path="/" element={Home({ refresh })} />
+            <Route path="/create" element={Create()} />
           </Routes>
         </div>
       </div>

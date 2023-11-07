@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("");
 
+  // const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,9 +18,14 @@ const Create = () => {
         body: body,
         author: author,
       }),
-    }).then(() => {
-      alert("New blog added");
-    });
+    })
+      .then(() => {
+        alert("New blog added");
+        // navigate("/");
+      })
+      .catch((e) => {
+        alert("Error adding new blog");
+      });
   };
 
   return (
@@ -30,11 +37,13 @@ const Create = () => {
           type="text"
           required
           value={title}
+          placeholder="Title"
           onChange={(e) => setTitle(e.target.value)}
         />
         <label>Blog body:</label>
         <textarea
           required
+          placeholder="Lorem Ipsum..."
           value={body}
           onChange={(e) => setBody(e.target.value)}
         ></textarea>
@@ -42,6 +51,7 @@ const Create = () => {
         <input
           type="text"
           value={author}
+          placeholder="xyz..."
           onChange={(e) => setAuthor(e.target.value)}
         />
         <button>Add Blog</button>
